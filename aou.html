@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MT101 Ultimate Question Bank | Eng. Aya Mokhtar</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --accent-color: #38bdf8;
+            --success-color: #22c55e;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: #334155;
+            --warning-color: #fbbf24;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 25px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 20px;
+        }
+        header h1 {
+            color: var(--accent-color);
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+        .signature {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+        }
+        .signature span {
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+        .welcome-banner {
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.1), rgba(129, 140, 248, 0.1));
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 25px;
+            text-align: center;
+            direction: rtl;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        .welcome-banner h3 {
+            color: var(--accent-color);
+            font-size: 1.4rem;
+            margin-bottom: 8px;
+        }
+        .welcome-banner p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #38bdf8, #818cf8, #c084fc);
+        }
+        .btn {
+            background: linear-gradient(135deg, #38bdf8, #0284c7);
+            color: #0f172a;
+            border: none;
+            padding: 12px 24px;
+            font-size: 1.05rem;
+            font-weight: bold;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            box-shadow: 0 4px 12px rgba(56, 189, 248, 0.3);
+        }
+        .btn:hover {
+            opacity: 0.95;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(56, 189, 248, 0.4);
+        }
+        select, input {
+            background-color: #0f172a;
+            color: white;
+            border: 1px solid var(--border-color);
+            padding: 12px;
+            border-radius: 10px;
+            font-size: 1rem;
+            margin: 10px 0;
+            width: 100%;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        select:focus, input:focus {
+            border-color: var(--accent-color);
+        }
+        .hidden {
+            display: none;
+        }
+        .question-box {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: var(--text-main);
+            direction: ltr;
+            text-align: left;
+            line-height: 1.5;
+        }
+        .badge {
+            background: rgba(56, 189, 248, 0.15);
+            color: var(--accent-color);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            display: inline-block;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        .options-list label {
+            display: block;
+            background-color: rgba(15, 23, 42, 0.7);
+            border: 1px solid var(--border-color);
+            padding: 14px 16px;
+            border-radius: 10px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            direction: ltr;
+            text-align: left;
+            transition: all 0.2s ease;
+        }
+        .options-list label:hover {
+            border-color: var(--accent-color);
+            background-color: rgba(30, 41, 59, 0.9);
+        }
+        .essay-input {
+            width: 100%;
+            height: 130px;
+            background-color: #0f172a;
+            color: white;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 12px;
+            font-size: 1rem;
+            direction: ltr;
+            outline: none;
+        }
+        .essay-input:focus {
+            border-color: var(--accent-color);
+        }
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 25px;
+        }
+        .motivational-box {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.9));
+            border: 1px solid var(--accent-color);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 20px;
+            text-align: center;
+            direction: rtl;
+        }
+        .congrats {
+            color: var(--success-color);
+            font-size: 1.6rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border-color);
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>MT101 Ultimate Question Bank (AOU)</h1>
+            <div class="signature">Architect & Developer: <span>Eng. Aya Mokhtar</span> 🛡️✨</div>
+        </header>
+
+        <!-- Welcome Motivational Banner -->
+        <div class="welcome-banner">
+            <h3>أهلاً بك يا بطل/ة الطموح والتميز! 🌟</h3>
+            <p>
+                كل خطوة بتخطوها النهارده في حل الأسئلة دي، بتصنع بيها نسخة أشطر، أذكى، وأقوى من نفسك بكره. 
+                ابدأ دلوقتي بثقة، حط هدفك قدام عيونك، واعرف إن التعب بيعدي ويتبدّل بفرحة النجاح والتفوق! 💪🔥
+            </p>
+        </div>
+
+        <!-- Setup Section -->
+        <div id="setup-section" class="card">
+            <h2>Exam Configuration & Past Exams Archives (Egypt, Saudi, Kuwait Branches)</h2>
+            
+            <label>Select Mode / Scope:</label>
+            <select id="exam-mode">
+                <option value="midterm">Midterm (First 3 Chapters Combined)</option>
+                <option value="final">Final (Comprehensive All 7 Chapters)</option>
+                <option value="chapter1">Chapter 1 Only</option>
+                <option value="chapter2">Chapter 2 Only</option>
+                <option value="chapter3">Chapter 3 Only</option>
+                <option value="chapter4">Chapter 4 Only</option>
+                <option value="chapter5">Chapter 5 Only</option>
+                <option value="chapter6">Chapter 6 Only</option>
+                <option value="chapter7">Chapter 7 Only</option>
+            </select>
+
+            <label>Select Number of Questions (1 to 200 - Half MCQ, Half Essay):</label>
+            <input type="number" id="num-questions" min="1" max="200" value="20" step="1">
+
+            <button class="btn" onclick="startQuiz()">Start Quiz Now 🚀</button>
+        </div>
+
+        <!-- Quiz Section -->
+        <div id="quiz-section" class="card hidden">
+            <div id="quiz-header" style="margin-bottom: 10px; color: var(--accent-color); font-weight: bold;"></div>
+            <div id="question-badge" class="badge"></div>
+            <div class="question-box" id="question-text"></div>
+            
+            <div id="answer-area"></div>
+            
+            <div class="nav-buttons">
+                <button class="btn" id="prev-btn" onclick="prevQuestion()" style="background: #334155; color: white; box-shadow: none;">Previous</button>
+                <button class="btn" id="next-btn" onclick="nextQuestion()">Next</button>
+            </div>
+        </div>
+
+        <!-- Result Section -->
+        <div id="result-section" class="card hidden">
+            <div style="font-size: 1.4rem; text-align: center; line-height: 1.6;" id="result-text"></div>
+            
+            <div class="motivational-box" id="cheering-msg"></div>
+            
+            <div style="text-align: center;">
+                <button class="btn" onclick="resetQuiz()" style="margin-top: 20px;">Try Another Quiz 🔄</button>
+            </div>
+        </div>
+
+        <footer>
+            All Rights Reserved &copy; 2026 | Designed & Developed by <span>Eng. Aya Mokhtar</span> 🌟
+        </footer>
+    </div>
+
+    <script>
+        let currentQuestions = [];
+        let currentIndex = 0;
+        let userAnswers = {};
+
+        const questionsByChapter = {
+            1: [
+                {type: 'mcq', text: '[AOU Egypt Branch Archive] Find the vertex of the quadratic function f(x) = x^2 + 4x - 9:', options: ['(-2, -13)', '(2, 5)', '(-4, -9)', '(0, -9)'], correct: 0},
+                {type: 'essay', text: '[AOU Saudi Branch Archive] Find the domain, vertex, and x-intercepts of the quadratic function f(x) = 2x^2 + 8x.'},
+                {type: 'mcq', text: '[AOU Kuwait Branch Archive] Find the domain and axis of symmetry for f(x) = 6 + 6x - 3x^2:', options: ['x = 1', 'x = -1', 'x = 2', 'x = 0'], correct: 0},
+                {type: 'essay', text: '[AOU Egypt Branch Archive] Analyze the quadratic function f(x) = x^2 + 4x - 9 to find its minimum/maximum value and vertex.'}
+            ],
+            2: [
+                {type: 'mcq', text: '[AOU Saudi Branch Archive] Find the equation of the line passing through (5, 4) and parallel to 6x + 3y - 4 = 0:', options: ['y = -2x + 14', 'y = 2x + 4', 'y = -0.5x + 1', 'y = 3x - 2'], correct: 0},
+                {type: 'essay', text: '[AOU Kuwait Branch Archive] If variable y varies directly as (x - 2) and y = 20 when x = 6, find the equation and calculate y when x = 12.'},
+                {type: 'mcq', text: '[AOU Egypt Branch Archive] Find the inverse function of f(x) = cube_root(3x - 5):', options: ['(x^3 + 5)/3', '3x^3 - 5', '(x - 5)/3', '3x + 5'], correct: 0},
+                {type: 'essay', text: '[AOU Saudi Branch Archive] Find the linear equation perpendicular to 2x + y = 5 and passing through point (1, 4).'}
+            ],
+            3: [
+                {type: 'mcq', text: '[AOU Kuwait Branch Archive] Use synthetic division to check if (x - 3) is a factor of f(x) = x^3 + x^2 - 9x - 9:', options: ['Remainder is 0 (Yes)', 'Remainder is non-zero (No)', 'Not a factor', 'Undefined'], correct: 0},
+                {type: 'essay', text: '[AOU Egypt Branch Archive] Use synthetic division to divide f(x) = 2x^4 + 7x^3 - 4x^2 - 27x - 18 by (x + 3) and state the quotient and remainder.'},
+                {type: 'mcq', text: '[AOU Saudi Branch Archive] Find the remainder when dividing 3x^6 - 2x^5 - x^4 - x^2 - 2x + 3 by (x - 1):', options: ['0', '2', '-1', '5'], correct: 0},
+                {type: 'essay', text: '[AOU Kuwait Branch Archive] Perform synthetic division for f(x) = x^3 + x^2 - 9x - 9 divided by (x - 3).'}
+            ],
+            4: [
+                {type: 'mcq', text: '[AOU Egypt Branch Archive] Solve the inequality: (3x + 2) / (2x - 7) < 0:', options: ['(-2/3, 7/2)', '(-inf, -2/3)', '(7/2, inf)', 'All Real Numbers'], correct: 0},
+                {type: 'essay', text: '[AOU Saudi Branch Archive] Find the domain of F(x) = ln(3x) and G(x) = sqrt(x - 1) in interval notation.'},
+                {type: 'mcq', text: '[AOU Kuwait Branch Archive] Solve the polynomial inequality: x^3 - 9x > 0:', options: ['(-3, 0) U (3, inf)', '(-inf, -3)', '(0, 3)', 'All Real Numbers'], correct: 0},
+                {type: 'essay', text: '[AOU Egypt Branch Archive] Find the interval notation for the domain of the logarithmic function f(x) = ln(x - 4).'}
+            ],
+            5: [
+                {type: 'mcq', text: '[AOU Saudi Branch Archive] Solve the exponential equation 2^x = 7:', options: ['x = ln(7)/ln(2)', 'x = 7/2', 'x = ln(2)/ln(7)', 'x = 2^7'], correct: 0},
+                {type: 'essay', text: '[AOU Kuwait Branch Archive] Solve the logarithmic equation: ln(x + 1) = ln(x - 2) + 1.'},
+                {type: 'mcq', text: '[AOU Egypt Branch Archive] Solve log_5(3x + 1) = 2:', options: ['x = 8', 'x = 5', 'x = 24/3', 'x = 12'], correct: 0},
+                {type: 'essay', text: '[AOU Saudi Branch Archive] Solve the exponential and logarithmic equations: 3^(2x) = 5 and log_3(x) + log_3(x - 6) = 3.'}
+            ],
+            6: [
+                {type: 'mcq', text: '[AOU Kuwait Branch Archive] How many distinct permutations can be formed from the letters of the word COLUMNS?', options: ['5040', '720', '120', '360'], correct: 0},
+                {type: 'essay', text: '[AOU Egypt Branch Archive] Calculate the number of ways to arrange a committee of 4 members from 72 employees.'},
+                {type: 'mcq', text: '[AOU Saudi Branch Archive] Find the value of combinations C(n, r) when choosing 3 items from 7:', options: ['35', '21', '210', '70'], correct: 0},
+                {type: 'essay', text: '[AOU Kuwait Branch Archive] Determine how many unique arrangements can be made using letters of a 6-letter word with repetitions.'}
+            ],
+            7: [
+                {type: 'mcq', text: '[AOU Egypt Branch Archive] If P(A) = 0.5, P(B) = 0.2, and P(A intersect B) = 0.1, what is P(B|A)?', options: ['0.2', '0.5', '0.1', '1.0'], correct: 0},
+                {type: 'essay', text: '[AOU Saudi Branch Archive] Given P(A) = 1/2, P(B) = 1/5, and P(A intersect B) = 1/10, find P(not B), P(A union B), P(B|A), and check independence.'},
+                {type: 'mcq', text: '[AOU Kuwait Branch Archive] If two events A and B are independent and P(A) = 0.4, P(B) = 0.5, find P(A intersect B):', options: ['0.20', '0.90', '0.10', '0.50'], correct: 0},
+                {type: 'essay', text: '[AOU Egypt Branch Archive] Explain using probability laws whether two events with given conditional probabilities are mutually exclusive.'}
+            ]
+        };
+
+        function startQuiz() {
+            const mode = document.getElementById('exam-mode').value;
+            let totalQ = parseInt(document.getElementById('num-questions').value);
+            if (isNaN(totalQ) || totalQ < 1) totalQ = 1;
+            if (totalQ > 200) totalQ = 200;
+
+            let pool = [];
+            if (mode === 'midterm') {
+                pool = [...questionsByChapter[1], ...questionsByChapter[2], ...questionsByChapter[3]];
+            } else if (mode === 'final') {
+                for (let i = 1; i <= 7; i++) {
+                    pool = pool.concat(questionsByChapter[i]);
+                }
+            } else if (mode.startsWith('chapter')) {
+                let chNum = mode.replace('chapter', '');
+                pool = questionsByChapter[chNum];
+            }
+
+            currentQuestions = [];
+            let half = Math.floor(totalQ / 2);
+
+            for (let i = 0; i < totalQ; i++) {
+                let template = pool[i % pool.length];
+                let isMcq = (i < half);
+
+                if (isMcq) {
+                    currentQuestions.push({
+                        id: i + 1,
+                        type: 'mcq',
+                        text: `${template.text} (Q${i+1})`,
+                        options: template.options || ['Option A', 'Option B', 'Option C', 'Option D'],
+                        correct: 0
+                    });
+                } else {
+                    currentQuestions.push({
+                        id: i + 1,
+                        type: 'essay',
+                        text: `${template.text} (Q${i+1})`
+                    });
+                }
+            }
+
+            currentIndex = 0;
+            userAnswers = {};
+
+            document.getElementById('setup-section').classList.add('hidden');
+            document.getElementById('quiz-section').classList.remove('hidden');
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            let q = currentQuestions[currentIndex];
+            document.getElementById('quiz-header').textContent = `Question ${currentIndex + 1} of ${currentQuestions.length}`;
+            document.getElementById('question-badge').textContent = q.type === 'mcq' ? 'Multiple Choice (MCQ)' : 'Essay Question';
+            document.getElementById('question-text').textContent = q.text;
+
+            let area = document.getElementById('answer-area');
+            area.innerHTML = '';
+
+            if (q.type === 'mcq') {
+                let html = '<div class="options-list">';
+                q.options.forEach((opt, idx) => {
+                    let checked = userAnswers[currentIndex] === idx ? 'checked' : '';
+                    html += `<label><input type="radio" name="mcq" value="${idx}" ${checked} onclick="saveMcq(${idx})"> ${opt}</label>`;
+                });
+                html += '</div>';
+                area.innerHTML = html;
+            } else {
+                let val = userAnswers[currentIndex] || '';
+                area.innerHTML = `<textarea class="essay-input" placeholder="Type your detailed solution here..." oninput="saveEssay(this.value)">${val}</textarea>`;
+            }
+
+            document.getElementById('prev-btn').style.display = currentIndex === 0 ? 'none' : 'inline-block';
+            document.getElementById('next-btn').textContent = currentIndex === currentQuestions.length - 1 ? 'Finish & Submit Quiz' : 'Next';
+        }
+
+        function saveMcq(idx) {
+            userAnswers[currentIndex] = idx;
+        }
+
+        function saveEssay(val) {
+            userAnswers[currentIndex] = val;
+        }
+
+        function nextQuestion() {
+            if (currentIndex < currentQuestions.length - 1) {
+                currentIndex++;
+                loadQuestion();
+            } else {
+                finishQuiz();
+            }
+        }
+
+        function prevQuestion() {
+            if (currentIndex > 0) {
+                currentIndex--;
+                loadQuestion();
+            }
+        }
+
+        function finishQuiz() {
+            let score = 0;
+            currentQuestions.forEach((q, idx) => {
+                if (q.type === 'mcq') {
+                    if (userAnswers[idx] === q.correct) score++;
+                } else {
+                    if (userAnswers[idx] && userAnswers[idx].trim().length > 0) {
+                        score++;
+                    }
+                }
+            });
+
+            let percentage = (score / currentQuestions.length) * 100;
+
+            document.getElementById('quiz-section').classList.add('hidden');
+            document.getElementById('result-section').classList.remove('hidden');
+
+            document.getElementById('result-text').innerHTML = `Quiz Completed Successfully! 🎉<br>Your Score: <b>${score}</b> out of <b>${currentQuestions.length}</b> (${percentage.toFixed(1)}%)`;
+
+            let cheer = document.getElementById('cheering-msg');
+            if (percentage >= 50) {
+                cheer.innerHTML = `
+                    <div class="congrats">عاش يا بطل/ة! إنجاز رائع وممتاز 🚀🔥</div>
+                    <p style="color: #94a3b8; font-size: 1.05rem; margin-top: 10px;">
+                        كل خطوة بتخطوها في المذاكرة بتزود ثقتك وبتقربك أكتر لهدفك. استمر بالروح دي، القمة تستحق التعب والمجهود ده كله! 💪✨
+                    </p>
+                `;
+            } else {
+                cheer.innerHTML = `
+                    <div style="color: #fbbf24; font-size: 1.5rem; font-weight: bold; margin-bottom: 10px;">محاولة ممتازة والبداية دايماً بتعلمنا الكثير! 💡</div>
+                    <p style="color: #94a3b8; font-size: 1.05rem; margin-top: 10px;">
+                        الأخطاء دي هي أحسن معلم ليك في طريق النجاح. راجع الأجزاء الصعبة دي بهدوء، واعرف إنك قدها وهتقفل المادة المرة الجاية! ثق في نفسك وكمل طريقك يا بطل. 🌟
+                    </p>
+                `;
+            }
+        }
+
+        function resetQuiz() {
+            document.getElementById('result-section').classList.add('hidden');
+            document.getElementById('setup-section').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
